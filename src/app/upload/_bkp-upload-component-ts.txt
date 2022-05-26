@@ -1,0 +1,79 @@
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {
+  HttpClient,
+  HttpEventType,
+  HttpErrorResponse,
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { VideoProps } from '../classes/VideoProps';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
+
+@Component({
+  selector: 'app-upload',
+  templateUrl: './upload.component.html',
+  styleUrls: ['./upload.component.scss'],
+})
+export class UploadComponent implements OnInit {
+  @Output() public onUploadFinished = new EventEmitter();
+
+  file!: File; // Variable to store file
+  progress!: number;
+  message!: string;
+  value!: number;
+  myVideos!: Observable<VideoProps[]>;
+  video_string!: string;
+
+  form!: FormGroup;
+
+  constructor(private http: HttpClient, public fb: FormBuilder) {
+    this.form = this.fb.group({
+      username: [''],
+      title: [''],
+      description: [''],
+    });
+  }
+
+  ngOnInit(): void {}
+
+  // uploadFile = (files: any) => {
+  //   if (files.length === 0) {
+  //     return;
+  //   }
+  //   let fileToUpload = <File>files[0];
+  //   const formData = new FormData();
+
+  //   formData.append('file', fileToUpload, fileToUpload.name);
+  //   formData.append('title', 'Test Upload');
+  //   formData.append('description', `This is a test upload - ${Date.now()}`);
+  //   // this username is used to send an email from the API.
+  //   formData.append('username', 'qxrtxc');
+
+  //   this.http
+  //     .post('http://auqxrbneiis001p:5055/upload', formData, {
+  //       reportProgress: true,
+  //       observe: 'events',
+  //     })
+
+  //     .subscribe(
+  //       (event: any) => {
+  //         if (event.type === HttpEventType.UploadProgress) {
+  //           this.progress = Math.round((100 * event.loaded) / event.total);
+  //           this.value = this.progress;
+  //         } else if (event.type == HttpEventType.Response) {
+  //           this.message = 'Upload success.';
+  //           this.onUploadFinished.emit(event.body);
+  //           this.video_string = event.body.videoString;
+  //           console.log(this.video_string);
+  //         }
+  //       },
+  //       (err: HttpErrorResponse) => {
+  //         console.log(err);
+  //       }
+  //     );
+  // };
+}

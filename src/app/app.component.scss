@@ -1,0 +1,16 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.flex-stretch {
+  flex: 1 0 auto;
+}

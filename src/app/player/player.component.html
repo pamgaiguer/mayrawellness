@@ -1,0 +1,19 @@
+<section>
+  <h1>{{ title }}</h1>
+
+  <video width="750" height="500" controls #videoPlayer>
+    <source [src]="this.videoTest" type="video/mp4" />
+  </video>
+</section>
+
+<!--
+<video
+width="500"
+height="345"
+controls
+disabled="true"
+(click)="toggleVideo($event)"
+#videoPlayer
+>
+<source [src]="Video.video" type="video/mp4" />
+</video> -->

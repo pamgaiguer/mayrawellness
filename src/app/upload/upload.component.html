@@ -1,0 +1,49 @@
+<section>
+  <h1>Sonic Prime Upload</h1>
+
+  <section>
+    <form [formGroup]="form" (ngSubmit)="this.submitForm()">
+      <label for="username">Username: </label>
+      <input
+        id="username"
+        placeholder="Username: qxrwxq"
+        type="text"
+        required
+        formControlName="username"
+      />
+      <br />
+      <label for="title">Title of the video: </label>
+      <input
+        id="title"
+        type="text"
+        placeholder="Example title"
+        required
+        formControlName="title"
+      />
+      <br />
+      <label for="title">Description of the video: </label>
+      <input
+        id="description"
+        type="text"
+        placeholder="Example Description"
+        required
+        formControlName="description"
+      />
+      <br />
+      <input
+        type="file"
+        placeholder="Choose file"
+        (change)="this.uploadFile($event)"
+      />
+      <!--
+        style="display: none"
+         <button mat-raised-button color="primary" (click)="file.click()"> -->
+      <button mat-raised-button color="primary">Upload File</button>
+    </form>
+  </section>
+  <br />
+
+  <section>
+    <p *ngIf="progress > 0 || message">{{ progress }}% - {{ message }}</p>
+  </section>
+</section>
